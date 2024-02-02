@@ -1,21 +1,25 @@
-body{
+body {
   background-color: whitesmoke;
 }
 
-#allCards{
+#allCards {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.card{
+h5,
+h1 {
+  text-align: center;
+}
+.card {
   overflow: hidden;
   border-radius: 2;
   width: 250px;
   height: 140px;
   margin: 10px;
 }
-.expeled-card{
+.expeled-card {
   overflow: hidden;
   border-radius: 2;
   width: 286px;
@@ -27,15 +31,17 @@ body{
   /* overflow: hidden; */
 }
 
-#displayExpelled, #displayStudents{
+#displayExpelled,
+#displayStudents {
   display: flex;
   flex-wrap: wrap;
 }
 
-#displayStudentsBorder, #displayExpelledBorder {
+#displayStudentsBorder,
+#displayExpelledBorder {
   border: 1px solid grey;
   border-radius: 5px;
-  margin: 5px;  
+  margin: 5px;
   /* justify-content: space-around; */
   width: 50%;
   /* align-content: center; */
@@ -43,31 +49,31 @@ body{
   padding: 20px;
 }
 
-h5, h1{
-  text-align: center;
-}
-
-.btn-flex{
+.btn-flex {
   display: flex;
   justify-content: center;
-
 }
-.btn-filter{
+.btn-filter {
   padding-left: 100px;
   padding-right: 110px;
   border-radius: 0px;
 }
 
-.header-styling{
+.header-styling {
   text-align: center;
 }
 
-.mb-3{
+.form-center {
   display: flex;
   justify-content: center;
 }
 
-#displayExpelled{
-  display:flex;
+#displayExpelled {
+  display: flex;
   justify-content: center;
+}
+
+.card-name {
+  display: flex;
+  justify-content: flex-start;
 }
