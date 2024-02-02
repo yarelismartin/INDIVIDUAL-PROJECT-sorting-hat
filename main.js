@@ -33,7 +33,7 @@ const students = [
       name: "Padma Patil",
       house: "Ravenclaw"
   },
-  {   id: 8,
+  {   id: 9,
       name: "Terry Boot",
       house: "Ravenclaw"
   },
@@ -90,7 +90,7 @@ const cardsOnDom =(array) => {
           <div class="card-body">
             <h5 class="card-title">${student.name}</h5>
             <p class="card-text">${student.house}</p>
-            <button type="button" class="btn btn-outline-danger"  id="expel--${student.id}">EXPEL</button>
+            <button type="click" class="btn btn-outline-danger"  id="expel--${student.id}">EXPEL</button>
           </div>
         </div>
       </div>
@@ -103,6 +103,7 @@ const cardsOnDom =(array) => {
   document.querySelector("#welcome-card").hidden = false;
   document.querySelector("#new-student-form").hidden = true;
   document.querySelector("#btn-group").hidden = true;
+  document.querySelector("#displayExpelled").hidden = true;
 
 //render formOnDom w/ event listener
 document.querySelector('#beginSorting').addEventListener('click', ()=>{
@@ -128,7 +129,7 @@ const createStudent =() =>{
     students.unshift(newStudentObj);
     cardsOnDom(students)
     sortingForm.reset();
-}
+};
 
 
 //Event listener for the sort btn. opens up cards and btns and calls the createStudent function
@@ -169,24 +170,57 @@ const buttonFilter = (e)=>{
   }
   if(e.target.id.includes("all")){
     cardsOnDom(students);
+    ExpelCardsOnDom(expelledStudents);
   }
 }
-
 document.querySelector("#btn-group").addEventListener('click', buttonFilter);
 
+const ExpelCardsOnDom =(array) => {
+  let domString = "";
+    array.forEach((student)=> {
+      domString += `<div class="card mb-3" style="max-width: 540px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <span></span>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">${student.name}</h5>
+            <p class="card-text">${student.house}</p>
+          </div>
+        </div>
+      </div>
+    </div>`
+    });
+  renderToDom("#displayExpelled",domString);
+};
 //Expel a student
+const displayStudent = document.querySelector("#displayStudents")
+const expelledStudents =[]
 
+displayStudent.addEventListener("click", (e) =>{
+  if(e.target.id.includes("expel")){
+    const [ ,id] = e.target.id.split("--");
+    console.log(id)
 
+    // Finding the Index of the Clicked Student in the students Array
+    const index = students.findIndex((student) => student.id === Number(id));
+    //Removing the Found Student from the students Array:
+    const expelledStudent = students.splice(index, 1)[0];
 
-// const filter = (houseString) => {
-//   const houseArray = [];
+    expelledStudents.push(expelledStudent)
+    
+    //create a new array containing onlt the students from the originaal array that have not been expelled using .filter  
+    const remainingStudents = students.filter((student)=> !expelledStudents.includes(student))
 
-//   for (const student of students) {
-//     if (student.house.toLocaleLowerCase === houseString) {
-//       houseArray.push(student);
-//     }
-//   }
-//   cardsOnDom(houseArray) ;
-// };
+    cardsOnDom(remainingStudents)
+    // Rendering expelled students in a separate section of the DOM
+    
+    ExpelCardsOnDom(expelledStudents);
+    
+    
+  }
+});
+
 
 cardsOnDom(students);
