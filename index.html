@@ -9,39 +9,38 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <div id="welcome-card" hidden>
-    <div class="card-body" >
-      <h5 class="card-title">Welcome to the Hogwarts Sorting Ceremony!
-      </h5>
-      <p class="card-text">
-        Greetings, aspiring witches and wizards! I am the Sorting Hat, the wise and ancient artifact that determines your destined house at Hogwarts. 
-        As you step into the magical realm of wizardry, it's time for the Sorting Hat to unveil the mysteries within you. <br> <br>
+  <div class="header-styling">
+    <div id="welcome-card" >
+      <div class="card-body" >
+        <h1 class="card-title">Welcome to the Hogwarts Sorting Ceremony!
+        </h1>
+        <p class="card-text">
+          Greetings, aspiring witches and wizards! I am the Sorting Hat, the wise and ancient artifact that determines your destined house at Hogwarts. 
+          As you step into the magical realm of wizardry, it's time for the Sorting Hat to unveil the mysteries within you. <br> <br>
 
-        In just a click, you can embark on your sorting journey. Discover if you're destined for the bravery of Gryffindor, the loyalty of Hufflepuff, the wisdom of Ravenclaw, or the cunning of Slytherin. Unveil your magical potential – let the sorting ceremony commence!<br> </p>
-      <button href="#" class="btn btn-primary" id="beginSorting">Begin Sorting</button>
-    </div>
-  </div>
-  <div id="new-student-form" hidden>
-    <form id="sortingForm">
-      <div class="mb-3">
-        <label for="name-of-student" class="form-label">Name</label>
-        <input type="text" class="form-control" id="name" placeholder="Name"
-        required>
+          In just a click, you can embark on your sorting journey. Discover if you're destined for the bravery of Gryffindor, the loyalty of Hufflepuff, the wisdom of Ravenclaw, or the cunning of Slytherin. Unveil your magical potential – let the sorting ceremony commence!<br> </p>
       </div>
-      <button type="submit" class="btn btn-primary" id="sortingBtn">Sort</button>
-    </form>
-  </div>
-  <div id="btn-group" hidden>
-    <button type="click" class="btn btn-secondary" id="all">All</button>
-    <button type="click" class="btn btn-danger" id="gryffindor">Gryffindor</button>
-    <button type="click" class="btn btn-warning" id="hufflepuff">Hufflepuff</button>
-    <button type="click" class="btn btn-primary" id="ravenclaw">Ravenclaw</button>
-    <button type="click" class="btn btn-success" id="slytherin">Slytherin</button>
+    </div>
+
+    <div>
+      <form id="sortingForm" style="margin: 35px 0px">
+        <button  class="btn btn-primary" id="sortingBtn">Sort</button>
+      </form>
+    </div>
+
+    <div id="btn-group" style="margin-bottom: 50px;"></div>
   </div>
   <div id="allCards">
-    <div id="displayStudents" hidden></div>
-    <div id="displayExpelled" hidden></div>
+    <div id="displayStudentsBorder" hidden>
+      <h5>First Year's</h5>
+      <div id="displayStudents" ></div>
+    </div>
+    <div id="displayExpelledBorder" hidden>
+      <h5>Moldy Voldy's Army</h5>
+      <div id="displayExpelled" ></div>
+    </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <script src="main.js"></script>
 </body>
