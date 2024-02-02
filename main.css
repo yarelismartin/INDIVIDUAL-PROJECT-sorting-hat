@@ -7,3 +7,67 @@ body{
   flex-direction: row;
   justify-content: space-around;
 }
+
+.card{
+  overflow: hidden;
+  border-radius: 2;
+  width: 250px;
+  height: 140px;
+  margin: 10px;
+}
+.expeled-card{
+  overflow: hidden;
+  border-radius: 2;
+  width: 286px;
+  height: 300px;
+  margin: 10px;
+}
+.col-md-4 {
+  background-color: aqua;
+  /* overflow: hidden; */
+}
+
+#displayExpelled, #displayStudents{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#displayStudentsBorder, #displayExpelledBorder {
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 5px;  
+  /* justify-content: space-around; */
+  width: 50%;
+  /* align-content: center; */
+  overflow: hidden;
+  padding: 20px;
+}
+
+h5, h1{
+  text-align: center;
+}
+
+.btn-flex{
+  display: flex;
+  justify-content: center;
+
+}
+.btn-filter{
+  padding-left: 100px;
+  padding-right: 110px;
+  border-radius: 0px;
+}
+
+.header-styling{
+  text-align: center;
+}
+
+.mb-3{
+  display: flex;
+  justify-content: center;
+}
+
+#displayExpelled{
+  display:flex;
+  justify-content: center;
+}

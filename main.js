@@ -1,72 +1,72 @@
-console.log("hello")
+
 // the main array that eill be used, conating all the students
 const students = [
   { id: 1,
-    name: "Harry Potter",
+    name: "Harry",
     house: "Gryffindor"
   },
   {   id: 2,
-      name: "Hermione Granger",
+      name: "Hermione",
       house: "Gryffindor"
   },
   {   id: 3,
-      name: "Ron Weasley",
+      name: "Ron",
       house: "Gryffindor"
   },
   {   id: 4,
-      name: "Ginny Weasley",
+      name: "Ginny",
       house: "Gryffindor"
   },
   {   id: 5,
-      name: "Neville Longbottom",
+      name: "Neville",
       house: "Gryffindor"
   },
   {   id: 6,
-      name: "Luna Lovegood",
+      name: "Luna",
       house: "Ravenclaw"
   },
   {   id: 7,
-      name: "Cho Chang",
+      name: "Cho",
       house: "Ravenclaw"
   },
   {   id: 8,
-      name: "Padma Patil",
+      name: "Padma",
       house: "Ravenclaw"
   },
   {   id: 9,
-      name: "Terry Boot",
+      name: "Terry",
       house: "Ravenclaw"
   },
   {   id: 10,
-      name: "Draco Malfoy",
+      name: "Draco",
       house: "Slytherin"
   },
   {   id: 11,
-      name: "Pansy Parkinson",
+      name: "Pansy",
       house: "Slytherin"
   },
   {   id: 12,
-      name: "Blaise Zabini",
+      name: "Blaise",
       house: "Slytherin"
   },
   {   id: 13,
-      name: "Millicent Bulstrode",
+      name: "Millicent",
       house: "Slytherin"
   },
   {   id: 14,
-      name: "Cedric Diggory",
+      name: "Cedric",
       house: "Hufflepuff"
   },
   {   id: 15,
-      name: "Ernie Macmillan",
+      name: "Ernie",
       house: "Hufflepuff"
   },
   {   id: 16,
-      name: "Hannah Abbott",
+      name: "Hannah",
       house: "Hufflepuff"
   },
   {   id: 17,
-      name: "Justin Finch-Fletchley",
+      name: "Justin",
       house: "Hufflepuff"
   },
   ];
@@ -74,17 +74,18 @@ const students = [
 //renderToDom function expression
 const renderToDom = (divId, html)=>{
   const selectedDiv = document.querySelector(divId);
-  selectedDiv.innerHTML = html;
+  selectedDiv.innerHTML = html
 }
 
 // render cardsOnDom function expression
 const cardsOnDom =(array) => {
   let domString = "";
     array.forEach((student)=> {
-      domString += `<div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
+      domString += `<div class="card mb-3" >
+      <div class="row g-0 example">
         <div class="col-md-4">
-          <span></span>
+          <div class="card-image-placeholder">
+          </div>
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -95,21 +96,44 @@ const cardsOnDom =(array) => {
         </div>
       </div>
     </div>`
+    
     });
   renderToDom("#displayStudents",domString);
 };
 
-//will run through all hidden divIds and ensure they are set to the correct boolean 
-  document.querySelector("#welcome-card").hidden = false;
-  document.querySelector("#new-student-form").hidden = true;
-  document.querySelector("#btn-group").hidden = true;
-  document.querySelector("#displayExpelled").hidden = true;
+//key
+const sortBtn = document.querySelector("#sortingBtn");
+const form = document.querySelector("form");
+const btnGroup = document.querySelector("#btn-group");
 
-//render formOnDom w/ event listener
-document.querySelector('#beginSorting').addEventListener('click', ()=>{
-  document.querySelector("#new-student-form").hidden = false;
-  
-});
+
+//render FormOnDom
+const formOnDom =()=>{
+  let domString = `
+  <h5>Enter First Year's Name</h5>
+  <div class="mb-3">
+  <input type="text" class="form-control" id="name" placeholder="Name"
+  required style="width:400px;">
+  <button type="submit" class="btn btn-primary sorting-btn" id="sortingBtn" style="margin-left:20px;">Sort!</button>
+  </div>`
+renderToDom("#sortingForm", domString);
+}
+
+//render btnsOnDom
+const btnsOnDom =()=>{
+  let domString = `
+  <hr>
+  <h5>Filter Students</h5>
+  <div class="btn-flex">
+  <button type="click" class="btn btn-secondary btn-filter" id="all">All</button>
+  <button type="click" class="btn btn-danger btn-filter" id="gryffindor">Gryffindor</button>
+  <button type="click" class="btn btn-warning btn-filter" id="hufflepuff">Hufflepuff</button>
+  <button type="click" class="btn btn-primary btn-filter" id="ravenclaw">Ravenclaw</button>
+  <button type="click" class="btn btn-success btn-filter" id="slytherin">Slytherin</button>
+  </div>
+  `
+renderToDom("#btn-group", domString);
+}
 
 // array of names thatmath.random will select from from within the creatStudent function
 const allHouses = [
@@ -126,30 +150,21 @@ const createStudent =() =>{
     name: document.querySelector("#name").value,
     house: allHouses[Math.floor(Math.random()*allHouses.length)]
   };
-    students.unshift(newStudentObj);
+    students.push(newStudentObj);
     cardsOnDom(students)
-    sortingForm.reset();
-};
+    form.reset();
+    console.log("submitting")
+}
+//eventListener for the form btn by using click and submit 
+sortBtn.addEventListener("click", formOnDom);
 
-
-//Event listener for the sort btn. opens up cards and btns and calls the createStudent function
-document.querySelector("#sortingForm").addEventListener("submit", (e)=>{
+form.addEventListener("submit", (e)=>{
   e.preventDefault();
-  console.log("submitting")
-  document.querySelector("#btn-group").hidden = false;
-  document.querySelector("#displayStudents").hidden = false;
-  document.querySelector("#displayExpelled").hidden = false;
   createStudent();
-})
-
-// targeting the house btns on the dom
-const showAll = document.querySelector("#all")
-const showGryffindor = document.querySelector("#gryffindor")
-const showHufflepuff = document.querySelector("#hufflepuff")
-const showRavenclaw = document.querySelector("#ravenclaw")
-const showSlytherin = document.querySelector("#slytherin")
-
-
+  btnsOnDom();
+  document.querySelector("#displayStudentsBorder").hidden = false;
+  document.querySelector("#displayExpelledBorder").hidden = false;
+});
 
 const buttonFilter = (e)=>{
   if(e.target.id.includes("gryffindor")){
@@ -173,27 +188,41 @@ const buttonFilter = (e)=>{
     ExpelCardsOnDom(expelledStudents);
   }
 }
+
 document.querySelector("#btn-group").addEventListener('click', buttonFilter);
 
 const ExpelCardsOnDom =(array) => {
   let domString = "";
     array.forEach((student)=> {
-      domString += `<div class="card mb-3" style="max-width: 540px;">
-      <div class="row g-0">
-        <div class="col-md-4">
-          <span></span>
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">${student.name}</h5>
-            <p class="card-text">${student.house}</p>
-          </div>
-        </div>
+      domString += `<div class="card expeled-card" >
+      <img src="https://pm1.aminoapps.com/6929/c50b896def25b54b11dfec725f9d8acac786ddfdr1-2044-1150v2_hq.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text">Sadly, ${student.name} went over to the dark side! </p>
+        <div  id="expel--${student.id}"></div>
       </div>
     </div>`
     });
   renderToDom("#displayExpelled",domString);
 };
+
+
+{/* 
+<div class="card mb-3" >
+      <div class="row g-0 example">
+        <div class="col-md-4">
+          <div class="card-image-placeholder">
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">${student.name}</h5>
+            <p class="card-text">${student.house}</p>
+            <button type="click" class="btn btn-outline-danger"  id="expel--${student.id}">EXPELed</button>
+          </div>
+        </div>
+      </div>
+    </div> */}
+
 //Expel a student
 const displayStudent = document.querySelector("#displayStudents")
 const expelledStudents =[]
@@ -221,6 +250,3 @@ displayStudent.addEventListener("click", (e) =>{
     
   }
 });
-
-
-cardsOnDom(students);
