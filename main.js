@@ -31,7 +31,17 @@ const cardsOnDom = (array) => {
   array.forEach((student) => {
     domString += `<div class="card mb-3" >
       <div class="row g-0 example">
-        <div class="col-md-4">
+        <div class="col-md-4" style="background-color: ${
+          student.house === "Ravenclaw"
+          ? "#0D6EFD"
+          : student.house === "Gryffindor"
+          ? "#DC3545" 
+          : student.house === "Slytherin"
+          ? "#198754" 
+          : student.house === "Hufflepuff"
+          ? "#FFC107" 
+          : " "
+        }">
           <div class="card-image-placeholder">
           </div>
         </div>
@@ -92,6 +102,7 @@ const createStudent = () => {
     house: allHouses[Math.floor(Math.random() * allHouses.length)],
   };
   students.push(newStudentObj);
+  students.sort((a,b) => a.name.localeCompare(b.name));
   cardsOnDom(students);
   form.reset();
   console.log("submitting");
@@ -146,7 +157,7 @@ const ExpelCardsOnDom = (array) => {
     domString += `<div class="card expeled-card" >
       <img src="https://pm1.aminoapps.com/6929/c50b896def25b54b11dfec725f9d8acac786ddfdr1-2044-1150v2_hq.jpg" class="card-img-top" alt="...">
       <div class="card-body">
-        <p class="card-text">Sadly, ${student.name} went over to the dark side! </p>
+        <p class="card-text">Sadly, <span style="color:red;">${student.name}</span> went over to the dark side! </p>
         <div  id="expel--${student.id}"></div>
       </div>
     </div>`;
@@ -169,8 +180,8 @@ displayStudent.addEventListener("click", (e) => {
     const expelledStudent = students.splice(index, 1)[0];
 
     expelledStudents.push(expelledStudent);
-
-    //create a new array containing onlt the students from the originaal array that have not been expelled using .filter
+    
+    //create a new array containing only the students from the originaal array that have not been expelled using .filter
     const remainingStudents = students.filter(
       (student) => !expelledStudents.includes(student)
     );

@@ -1,5 +1,6 @@
 body {
   background-color: whitesmoke;
+  font-family: 'STIX Two Text', serif;
 }
 
 #allCards {
@@ -27,7 +28,7 @@ h1 {
   margin: 10px;
 }
 .col-md-4 {
-  background-color: aqua;
+  background-color: darkblue;
   /* overflow: hidden; */
 }
 
