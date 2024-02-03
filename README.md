@@ -15,4 +15,4 @@ Screenshots of project:
 ![Screenshot 2024-02-02 175158](https://github.com/yarelismartin/INDIVIDUAL-PROJECT-sorting-hat/assets/153558948/41188d6b-c10a-4c55-bd58-ef1cd6fb8508)
 ![Screenshot 2024-02-02 180755](https://github.com/yarelismartin/INDIVIDUAL-PROJECT-sorting-hat/assets/153558948/0b227af6-05dc-4e9c-8e3f-799249a29c3d)
 
-Link to Loom video:https://www.loom.com/share/289724d545924eb5967528123e131191?sid=137f89bb-dfc4-4d7a-a8a9-cd5dc5f152d5
+Link to Loom video:[https://www.loom.com/share/289724d545924eb5967528123e131191?sid=137f89bb-dfc4-4d7a-a8a9-cd5dc5f152d5](https://www.loom.com/share/c7c7fc25e6a144f5b4445341fa0dcb0c?sid=1c65a474-6264-4cdb-a3eb-ffaf0c8bf001)https://www.loom.com/share/c7c7fc25e6a144f5b4445341fa0dcb0c?sid=1c65a474-6264-4cdb-a3eb-ffaf0c8bf001
